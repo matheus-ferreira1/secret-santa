@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { RouterProvider } from "react-router-dom";
 
 import { router } from "@/routes";
+import { AuthProvider } from "@/contexts/auth-context";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,7 +29,7 @@ export const AppProviders: React.FC<{ children?: ReactNode }> = ({
 }) => {
   return (
     <QueryClientProvider client={queryClient}>
-      {children}
+      <AuthProvider>{children}</AuthProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

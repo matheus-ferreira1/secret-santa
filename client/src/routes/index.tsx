@@ -1,20 +1,29 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import Home from "@/pages/Home";
+import LoginPage from "@/pages/Login";
+import RegisterPage from "@/pages/Register";
+import { RedirectAuthenticatedUsers } from "@/components/auth-routes";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
   },
-  //   {
-  //     path: "/login",
-  //     element: <LoginPage />,
-  //   },
-  //   {
-  //     path: "/signup",
-  //     element: <SignUpPage />,
-  //   },
+  {
+    element: <RedirectAuthenticatedUsers />,
+    children: [
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
+      },
+    ],
+  },
+
   //   {
   //     element: <PrivateRoute />,
   //     children: [
