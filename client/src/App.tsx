@@ -1,7 +1,9 @@
+import { AppRouterProvider } from "./providers/app-providers";
+
 function App() {
   return (
     <>
-      <h1 className="text-red-500">teste</h1>
+      <AppRouterProvider />;
     </>
   );
 }
