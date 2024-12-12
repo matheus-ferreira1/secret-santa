@@ -1,9 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 
+import {
+  RedirectAuthenticatedUsers,
+  RedirectUnauthenticatedUsers,
+} from "@/components/auth-routes";
 import Home from "@/pages/Home";
 import LoginPage from "@/pages/Login";
 import RegisterPage from "@/pages/Register";
-import { RedirectAuthenticatedUsers } from "@/components/auth-routes";
+import DashboardPage from "@/pages/Dashboard";
+import DashboardLayout from "@/pages/Dashboard/dashboard-layout";
 
 export const router = createBrowserRouter([
   {
@@ -23,26 +28,43 @@ export const router = createBrowserRouter([
       },
     ],
   },
-
-  //   {
-  //     element: <PrivateRoute />,
-  //     children: [
-  //       {
-  //         path: "/dashboard",
-  //         element: <DashboardPage />,
-  //       },
-  //       {
-  //         path: "/new-group",
-  //         element: <NewGroup />,
-  //       },
-  //       {
-  //         path: "/groups/:groupId",
-  //         element: <GroupDetailsPage />,
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     path: "*",
-  //     element: <NotFound />,
-  //   },
+  {
+    element: <RedirectUnauthenticatedUsers />,
+    children: [
+      {
+        element: <DashboardLayout />,
+        children: [
+          {
+            path: "/dashboard",
+            element: <DashboardPage />,
+          },
+          {
+            path: "/groups",
+            children: [
+              {
+                path: "create",
+                element: <>create page</>,
+              },
+              {
+                path: "find",
+                element: <>find group page</>,
+              },
+              {
+                path: ":groupId",
+                element: <>groupid test</>,
+              },
+            ],
+          },
+          {
+            path: "/features",
+            element: <>features page</>,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <>not found page</>,
+  },
 ]);
