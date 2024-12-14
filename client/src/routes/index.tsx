@@ -9,6 +9,7 @@ import LoginPage from "@/pages/Login";
 import RegisterPage from "@/pages/Register";
 import DashboardPage from "@/pages/Dashboard";
 import DashboardLayout from "@/pages/Dashboard/dashboard-layout";
+import CreateGroupPage from "@/pages/groups/create-group";
 
 export const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ export const router = createBrowserRouter([
             children: [
               {
                 path: "create",
-                element: <>create page</>,
+                element: <CreateGroupPage />,
               },
               {
                 path: "find",

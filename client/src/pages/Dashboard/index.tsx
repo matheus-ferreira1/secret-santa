@@ -30,7 +30,7 @@ const DashboardPage = () => {
 
   return (
     <div className="py-8 w-full px-4 lg:px-6">
-      <div className="space-y-8 container">
+      <div className="space-y-8">
         <h2 className="text-3xl font-bold tracking-tight">
           Your Secret Santa Groups
         </h2>

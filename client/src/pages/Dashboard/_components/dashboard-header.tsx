@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Gift, LogOut, PlusCircle, Search, Sparkles } from "lucide-react";
 
 import { useAuth } from "@/contexts/auth-context";
@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import LogoButton from "@/components/logo";
 
 const dashboardHeaderLinks = [
   {
@@ -39,7 +40,6 @@ const dashboardHeaderLinks = [
 ];
 
 const DashboardHeader = () => {
-  const navigate = useNavigate();
   const { user, logout } = useAuth();
 
   const getInitials = (name: string) => {
@@ -53,15 +53,12 @@ const DashboardHeader = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/");
   };
 
   return (
     <header className="sticky z-50 w-full px-4 lg:px-6 border-b">
       <div className="flex justify-between h-14">
-        <Link to="/" className="mr-6 flex items-center space-x-2">
-          <span className="text-xl font-bold">🎅 SecretSanta</span>
-        </Link>
+        <LogoButton />
         <nav className="flex flex-1 items-center space-x-4 justify-end">
           {dashboardHeaderLinks.map((link) => (
             <NavLink
@@ -90,10 +87,10 @@ const DashboardHeader = () => {
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    {user?.name}
+                    {user!.name}
                   </p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    {user?.email}
+                    {user!.email}
                   </p>
                 </div>
               </DropdownMenuLabel>
