@@ -10,6 +10,7 @@ import RegisterPage from "@/pages/Register";
 import DashboardPage from "@/pages/Dashboard";
 import DashboardLayout from "@/pages/Dashboard/dashboard-layout";
 import CreateGroupPage from "@/pages/groups/create-group";
+import GroupPage from "@/pages/groups/group-page";
 
 export const router = createBrowserRouter([
   {
@@ -52,7 +53,7 @@ export const router = createBrowserRouter([
               },
               {
                 path: ":groupId",
-                element: <>groupid test</>,
+                element: <GroupPage />,
               },
             ],
           },
