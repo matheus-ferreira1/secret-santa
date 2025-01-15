@@ -4,7 +4,7 @@ import {
   RedirectAuthenticatedUsers,
   RedirectUnauthenticatedUsers,
 } from "@/components/auth-routes";
-import Home from "@/pages/Home";
+import { Home } from "@/pages/Home";
 import LoginPage from "@/pages/Login";
 import RegisterPage from "@/pages/Register";
 import DashboardPage from "@/pages/Dashboard";

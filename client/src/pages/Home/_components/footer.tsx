@@ -1,17 +1,23 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <footer className="border-t py-12 px-4 lg:px-6">
-      <div className="flex flex-col items-center gap-4">
-        <div className="flex flex-col items-center">
-          <h3 className="text-lg font-bold">🎅 SecretSanta</h3>
-          <p className="text-sm text-muted-foreground">
-            Making gift exchanges magical since 2024.
-          </p>
-        </div>
-        <div className="size-2 rounded-full bg-muted" />
-        <p className="text-center text-sm text-muted-foreground">
-          © 2024 SecretSanta. All rights reserved.
+    <footer className="w-full border-t border-gray-800 bg-black/40 backdrop-blur-sm">
+      <div className="container px-4 md:px-6 mx-auto flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center">
+        <p className="text-xs text-gray-400">
+          © {new Date().getFullYear()} SecretSanta. All rights reserved.
         </p>
+        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+          <Link className="text-xs text-gray-400 hover:text-white" to="/terms">
+            Terms of Service
+          </Link>
+          <Link
+            className="text-xs text-gray-400 hover:text-white"
+            to="/privacy"
+          >
+            Privacy
+          </Link>
+        </nav>
       </div>
     </footer>
   );
