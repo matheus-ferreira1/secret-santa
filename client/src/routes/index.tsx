@@ -5,8 +5,8 @@ import {
   RedirectUnauthenticatedUsers,
 } from "@/components/auth-routes";
 import { Home } from "@/pages/Home";
-import LoginPage from "@/pages/Login";
-import RegisterPage from "@/pages/Register";
+import { LoginPage } from "@/pages/Login";
+import { RegisterPage } from "@/pages/Register";
 import DashboardPage from "@/pages/Dashboard";
 import DashboardLayout from "@/pages/Dashboard/dashboard-layout";
 import CreateGroupPage from "@/pages/groups/create-group";
