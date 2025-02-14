@@ -1,0 +1,39 @@
+services:
+  postgres:
+    container_name: secret_santa
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=secretsanta
+      - POSTGRES_PASSWORD=secretsanta
+      - POSTGRES_DB=secretsanta
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - secret_santa_network
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin_secret_santa
+    image: dpage/pgadmin4:latest
+    ports:
+      - "8080:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - secret_santa_network
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  secret_santa_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  pgadmin_data:
