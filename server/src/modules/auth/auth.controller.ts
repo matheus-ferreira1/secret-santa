@@ -32,10 +32,8 @@ export class AuthController {
   }
 
   @Post('logout')
-  async logout(
-    @Res({ passthrough: true }) response: Response,
-  ): Promise<Response> {
+  async logout(@Res({ passthrough: true }) response: Response) {
     response.cookie('jwt', '', this.authService.getCookieForLogout());
-    return response.status(HttpStatus.OK).send();
+    return { message: 'Logout success' };
   }
 }
