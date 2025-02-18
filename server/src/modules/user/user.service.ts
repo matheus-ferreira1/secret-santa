@@ -1,25 +1,21 @@
-import {
-  ConflictException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { hashPassword } from '../utils/password';
-import { ReturnUserDto } from './dtos/return-user.dto';
+import { ReturnUserDto, toDto } from './dtos/return-user.dto';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private userRepository: Repository<User>,
+    private readonly userRepository: Repository<User>,
   ) {}
 
   async getAllUsers(): Promise<ReturnUserDto[]> {
     const users = await this.userRepository.find();
-    return users.map((user) => this.toDto(user));
+    return users.map((user) => toDto(user));
   }
 
   async findUserByEmail(email: string): Promise<User> {
@@ -41,16 +37,6 @@ export class UserService {
       password: hashedPassword,
     });
 
-    return this.toDto(newUser);
-  }
-
-  private toDto(user: User): ReturnUserDto {
-    return {
-      id: user.id,
-      email: user.email,
-      name: user.name,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt,
-    };
+    return toDto(newUser);
   }
 }

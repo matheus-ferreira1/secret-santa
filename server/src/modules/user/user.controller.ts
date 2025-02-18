@@ -8,7 +8,6 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dtos/create-user.dto';
-import { User } from './entities/user.entity';
 import { ReturnUserDto } from './dtos/return-user.dto';
 
 @Controller('users')
